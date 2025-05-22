@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Netflix Clone</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo" />
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">TV Shows</a></li>
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">Anime</a></li>
+      <li><a href="mylist.html">My List</a></li>
+    </ul>
+    <input type="text" id="searchInput" placeholder="Search titles..." autocomplete="off" />
+    <div class="account-menu">
+      <img class="avatar" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Avatar" />
+      <div class="dropdown">
+        <ul>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="account.html">Account</a></li>
+          <li><a href="mylist.html">My List</a></li>
+          <li id="logout">Sign Out</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <section class="banner" id="banner">
+    <div class="banner-content">
+      <h1 id="banner-title">Loading...</h1>
+      <p id="banner-description">Loading description...</p>
+      <div class="banner-buttons">
+        <button class="banner-button" id="banner-play">▶ Play</button>
+        <button class="banner-button" id="addToList">+ My List</button>
+      </div>
+    </div>
+    <div class="banner-fadeBottom"></div>
+  </section>
+
+  <div class="row-container">
+    <div class="row">
+      <h2>Netflix Originals</h2>
+      <div class="row-posters" id="originals"></div>
+    </div>
+    <div class="row">
+      <h2>Trending Now</h2>
+      <div class="row-posters" id="trending"></div>
+    </div>
+    <div class="row">
+      <h2>Top Rated</h2>
+      <div class="row-posters" id="top-rated"></div>
+    </div>
+    <div class="row">
+      <h2>Anime</h2>
+      <div class="row-posters" id="anime"></div>
+    </div>
+  </div>
+
+  <!-- Trailer Modal -->
+  <div id="trailerModal" class="modal">
+    <span class="close">&times;</span>
+    <iframe id="trailerFrame" width="100%" height="500" allowfullscreen></iframe>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

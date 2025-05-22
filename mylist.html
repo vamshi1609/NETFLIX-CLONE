@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My List - Netflix Clone</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo" />
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="account.html">Account</a></li>
+    </ul>
+  </header>
+
+  <main class="mylist-container">
+    <h1>My List</h1>
+    <div id="myListMovies"></div>
+  </main>
+
+  <script>
+    const myListContainer = document.getElementById("myListMovies");
+
+    function displayMyList() {
+      const myList = JSON.parse(localStorage.getItem("myList")) || [];
+      if (myList.length === 0) {
+        myListContainer.innerHTML = "<p>Your list is empty.</p>";
+        return;
+      }
+      myListContainer.innerHTML = "";
+      myList.forEach((movie) => {
+        const div = document.createElement("div");
+        div.style.marginBottom = "20px";
+
+        const title = movie.title || movie.name;
+        const imgSrc = movie.poster_path
+          ? "https://image.tmdb.org/t/p/original" + movie.poster_path
+          : "https://via.placeholder.com/150x225?text=No+Image";
+
+        div.innerHTML = `
+          <img src="${imgSrc}" alt="${title}" style="width:150px; float:left; margin-right: 15px; border-radius:4px" />
+          <h3>${title}</h3>
+          <p>${movie.overview || "No description available."}</p>
+          <button data-id="${movie.id}" class="remove-btn" style="background:#e50914; border:none; color:white; padding:5px 10px; cursor:pointer; border-radius:4px;">Remove</button>
+          <div style="clear:both;"></div>
+        `;
+        myListContainer.appendChild(div);
+      });
+
+      // Remove button
+      const removeButtons = document.querySelectorAll(".remove-btn");
+      removeButtons.forEach((btn) =>
+        btn.addEventListener("click", () => {
+          const id = parseInt(btn.getAttribute("data-id"));
+          let myList = JSON.parse(localStorage.getItem("myList")) || [];
+          myList = myList.filter((m) => m.id !== id);
+          localStorage.setItem("myList", JSON.stringify(myList));
+          displayMyList();
+        })
+      );
+    }
+
+    displayMyList();
+  </script>
+</body>
+</html>

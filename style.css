@@ -1,0 +1,288 @@
+/* Reset & base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #141414;
+  color: white;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #141414;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+  justify-content: space-between;
+}
+.logo {
+  height: 35px;
+  cursor: pointer;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+.nav-links li {
+  line-height: 60px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+.nav-links li a {
+  color: white;
+}
+.nav-links li:hover {
+  color: #e50914;
+}
+#searchInput {
+  padding: 7px 12px;
+  border-radius: 4px;
+  border: none;
+  font-size: 14px;
+  outline: none;
+  width: 180px;
+  background-color: #333;
+  color: white;
+}
+#searchInput::placeholder {
+  color: #bbb;
+}
+
+/* Account Menu */
+.account-menu {
+  position: relative;
+  cursor: pointer;
+}
+.avatar {
+  width: 35px;
+  border-radius: 4px;
+}
+.dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background: #222;
+  border-radius: 4px;
+  width: 140px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  z-index: 1500;
+}
+.dropdown ul {
+  list-style: none;
+}
+.dropdown ul li {
+  padding: 10px 15px;
+  font-size: 14px;
+  border-bottom: 1px solid #444;
+}
+.dropdown ul li:last-child {
+  border-bottom: none;
+  cursor: pointer;
+  color: #e50914;
+  font-weight: 700;
+}
+.dropdown ul li:hover {
+  background-color: #333;
+  color: #e50914;
+}
+.account-menu:hover .dropdown {
+  display: block;
+}
+
+/* Banner */
+.banner {
+  position: relative;
+  height: 60vh;
+  color: white;
+  object-fit: contain;
+  background-size: cover;
+  background-position: center center;
+  padding: 60px 30px 20px 30px;
+  margin-top: 60px;
+  display: flex;
+  align-items: flex-end;
+}
+.banner-content {
+  max-width: 600px;
+}
+#banner-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+}
+#banner-description {
+  font-size: 1.2rem;
+  line-height: 1.3;
+  max-width: 80%;
+  height: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.banner-buttons {
+  margin-top: 1rem;
+}
+.banner-button {
+  cursor: pointer;
+  color: white;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 10px 24px;
+  margin-right: 10px;
+  background-color: rgba(51, 51, 51, 0.5);
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+.banner-button:hover {
+  background-color: #e50914;
+}
+
+/* Banner fade */
+.banner-fadeBottom {
+  height: 7.4rem;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(20, 20, 20, 0.61),
+    #141414
+  );
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Rows */
+.row-container {
+  padding: 20px 20px 50px 20px;
+  margin-top: 20px;
+}
+.row {
+  margin-bottom: 30px;
+}
+.row h2 {
+  margin-left: 10px;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+.row-posters {
+  display: flex;
+  overflow-x: auto;
+  padding-left: 10px;
+  scrollbar-width: none; /* Firefox */
+}
+.row-posters::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+.row-posters img {
+  max-height: 160px;
+  object-fit: contain;
+  margin-right: 8px;
+  transition: transform 0.3s;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.row-posters img:hover {
+  transform: scale(1.1);
+}
+
+/* Modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 2000;
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.85);
+}
+.close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 2100;
+}
+
+/* Additional CSS for forms and mylist */
+
+.form-container {
+  max-width: 400px;
+  margin: 100px auto 40px;
+  background-color: #222;
+  padding: 30px;
+  border-radius: 8px;
+  color: white;
+}
+.form-container h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.form-container label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+}
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #e50914;
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.form-container button:hover {
+  background-color: #f40612;
+}
+#loginMessage {
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* My List */
+.mylist-container {
+  padding: 100px 20px 50px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+.mylist-container h1 {
+  margin-bottom: 20px;
+}

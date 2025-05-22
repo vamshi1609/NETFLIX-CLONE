@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - Netflix Clone</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo" />
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="mylist.html">My List</a></li>
+    </ul>
+  </header>
+
+  <main class="form-container">
+    <h1>Login</h1>
+    <form id="loginForm">
+      <label for="email">Email:</label>
+      <input id="email" type="email" required placeholder="Enter your email" />
+      <label for="password">Password:</label>
+      <input id="password" type="password" required placeholder="Enter password" />
+      <button type="submit">Sign In</button>
+    </form>
+    <div id="loginMessage"></div>
+  </main>
+
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    const loginMessage = document.getElementById("loginMessage");
+
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = loginForm.email.value.trim();
+      const password = loginForm.password.value.trim();
+
+      // Simple check: just email includes '@' and password length > 3
+      if (email.includes("@") && password.length > 3) {
+        localStorage.setItem("loggedIn", "true");
+        loginMessage.textContent = "Login successful! Redirecting...";
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 1200);
+      } else {
+        loginMessage.textContent = "Invalid credentials.";
+      }
+    });
+  </script>
+</body>
+</html>

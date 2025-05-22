@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Account - Netflix Clone</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo" />
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="mylist.html">My List</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </header>
+
+  <main class="form-container">
+    <h1>Account Settings</h1>
+    <p>This is a placeholder for account info and settings.</p>
+    <button id="logoutAccount" style="background:#e50914; border:none; color:white; padding:10px 20px; font-weight:700; cursor:pointer; border-radius:4px;">Sign Out</button>
+  </main>
+
+  <script>
+    document.getElementById("logoutAccount").addEventListener("click", () => {
+      localStorage.removeItem("loggedIn");
+      alert("Logged out!");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>
